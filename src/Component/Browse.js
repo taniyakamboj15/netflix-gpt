@@ -1,10 +1,18 @@
 import React from 'react'
 import Header from './Header';
+import useNowPlayingMovie from "../utils/useNowPlayingMovie";
+import MainContainer from './MainContainer';
+
 
 const Browse = () => {
+  useNowPlayingMovie();
+ 
   return (
     <div>
         <Header/>
+        <MainContainer />
+        
+        
     </div>
   )
 }

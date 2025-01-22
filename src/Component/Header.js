@@ -4,12 +4,15 @@ import { auth } from '../utils/firebase'
 import { signOut } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
 
 const Header = () => {
   const navigate= useNavigate();
   const dispatch = useDispatch();
+  const user = useSelector((store)=>store.user)
+  const photoUrl = useSelector((store)=>store?.user?.photoURL)
+
   const handleSignOut=()=>{
     signOut(auth).then(() => {
     // navigate("/")
@@ -39,11 +42,12 @@ const Header = () => {
   return (
     <div className='fixed bg-gradient-to-b from-black w-full z-10 top-0 flex justify-between items-center  px-10'>
         <img className="w-60"src={LOGO_URL} alt="header logo"></img>
+        {user && 
         <div className='relative cursor-pointer group '>
             <div className='flex items-center gap-4'>
               <img
                 className=' h-5 sm:h-9 rounded-full'
-                src="https://avatars.githubusercontent.com/u/152771807?v=4"
+                src={photoUrl}
                 alt='User Avatar'
               />
               <span>
@@ -105,7 +109,7 @@ const Header = () => {
                 <span>Sign Out</span>
               </div>
             </div>
-          </div>
+          </div>}
         
     </div>
   )
