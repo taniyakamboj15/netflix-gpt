@@ -9,3 +9,15 @@ export const API_Options =  {
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNmMwYjQwZmVkZTQyNThkMWFhM2VmMGQ5NDM1ZWVlZSIsIm5iZiI6MTczNzU2MDM1MC43ODMsInN1YiI6IjY3OTExMTFlZmMyNTE5YjQzZjc3NjA2MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.cjBjJYPebvt_QJjpq_Y2b_8oxguudIy5-VFdvX2ihbA'
     }
   };
+export const NOWPLAYING_API =
+  "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
+
+  
+export const POSTER_PATH = "https://image.tmdb.org/t/p/original/";
+
+export const POPULAR_API =
+  "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
+export const TOP_RATED_API =
+  "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1";
+export const TRENDING_MOVIE_API =
+  "https://api.themoviedb.org/3/trending/movie/day?language=en-US";

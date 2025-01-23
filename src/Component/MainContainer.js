@@ -1,18 +1,26 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React from 'react';
+import { useSelector } from 'react-redux';
 import VedioTitle from './VedioTitle';
+import VedioBackground from './VideoBackground';
+import useNowPlayingMovie from '../utils/useNowPlayingMovie';
+import usePopularApi from '../utils/usePopularApi';
+import useTopRated from '../utils/useTopRated';
+
 
 const MainContainer = () => {
+  useNowPlayingMovie();
+  usePopularApi();
+  useTopRated();
+  
     const movies = useSelector((store)=>store.movie.nowplayingmovies);
-    console.log(movies);
     if(!movies)return;
-    const mainMovie = movies[0]
-    console.log(mainMovie);
-    const {original_title,overview}=mainMovie;
+    const mainMovie = movies[0];
+    const {original_title,overview,id}=mainMovie;
 
   return (
-    <div className='mt-10'>
+    <div >
     < VedioTitle title={original_title} overview={overview}/>
+    <VedioBackground movieId={id}/>
     </div>
     
   )
