@@ -5,12 +5,14 @@ import VedioBackground from './VideoBackground';
 import useNowPlayingMovie from '../utils/useNowPlayingMovie';
 import usePopularApi from '../utils/usePopularApi';
 import useTopRated from '../utils/useTopRated';
+import useTrendingMovie from '../utils/useTrendingMovie';
 
 
 const MainContainer = () => {
   useNowPlayingMovie();
   usePopularApi();
   useTopRated();
+  useTrendingMovie();
   
     const movies = useSelector((store)=>store.movie.nowplayingmovies);
     if(!movies)return;
