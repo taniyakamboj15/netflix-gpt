@@ -6,12 +6,15 @@ import { useNavigate } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
+import { toggleGptSearch } from '../utils/GPTSlice';
 
 const Header = () => {
   const navigate= useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store)=>store.user)
   const photoUrl = useSelector((store)=>store?.user?.photoURL)
+  const isGpt = useSelector((store) => store.gpt.showGptSearch);
+  
 
   const handleSignOut=()=>{
     signOut(auth).then(() => {
@@ -34,15 +37,26 @@ const Header = () => {
         navigate("/")
       }
     });
+  
 
     // Cleanup function to avoid memory leaks
     return () => unsubscribe();
   }, [dispatch,navigate]);
+  
+  const handleGptSearch=()=>{
+    dispatch(toggleGptSearch());
+
+  }
 
   return (
     <div className='fixed bg-gradient-to-b from-black w-full z-10 top-0 flex justify-between items-center  px-10'>
         <img className="w-60"src={LOGO_URL} alt="header logo"></img>
         {user && 
+        <div className='flex gap-4'>
+          <button className='bg-purple-950 text-white rounded-lg px-4 'onClick={handleGptSearch}>
+            {isGpt ? "Home" : " ChatGPT"}
+          </button>
+
         <div className='relative cursor-pointer group '>
             <div className='flex items-center gap-4'>
               <img
@@ -108,7 +122,7 @@ const Header = () => {
                 </svg>
                 <span>Sign Out</span>
               </div>
-            </div>
+            </div></div>
           </div>}
         
     </div>
