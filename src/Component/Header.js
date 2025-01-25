@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { LOGO_URL } from '../utils/constants'
+import { LOGO_URL, SUPPORTED_LANGUAGE } from '../utils/constants'
 import { auth } from '../utils/firebase'
 import { signOut } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +7,8 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
 import { toggleGptSearch } from '../utils/GPTSlice';
+import { changeLanguage } from '../utils/configSlice';
+import lang from '../utils/languageConstant';
 
 const Header = () => {
   const navigate= useNavigate();
@@ -14,6 +16,8 @@ const Header = () => {
   const user = useSelector((store)=>store.user)
   const photoUrl = useSelector((store)=>store?.user?.photoURL)
   const isGpt = useSelector((store) => store.gpt.showGptSearch);
+  const langKey=useSelector((store)=>store.lang.configLang)
+  const currentLang = lang[langKey] || lang.en;
   
 
   const handleSignOut=()=>{
@@ -47,14 +51,25 @@ const Header = () => {
     dispatch(toggleGptSearch());
 
   }
+  const handleLanguageChange=(e)=>{
+    dispatch(changeLanguage(e.target.value))
+
+  }
+  const showGptSearch=useSelector((store)=>store.gpt.showGptSearch);
 
   return (
     <div className='fixed bg-gradient-to-b from-black w-full z-10 top-0 flex justify-between items-center  px-10'>
         <img className="w-60"src={LOGO_URL} alt="header logo"></img>
         {user && 
         <div className='flex gap-4'>
+         {showGptSearch &&
+          <select className='p-2 m-2 bg-green-800 text-white'onClick={handleLanguageChange}>
+            {SUPPORTED_LANGUAGE.map((lang)=><option key={lang.abbreviation} value={lang.abbreviation}>{lang.name}</option>)}
+            
+          </select>}
+
           <button className='bg-purple-950 text-white rounded-lg px-4 'onClick={handleGptSearch}>
-            {isGpt ? "Home" : " ChatGPT"}
+            {isGpt ? `${currentLang.home}` : `${currentLang.chatGpt}`}
           </button>
 
         <div className='relative cursor-pointer group '>
@@ -99,7 +114,7 @@ const Header = () => {
                     d='M16 14v4H8v-4m4 0V6m0 8h-4M3 3h18'
                   />
                 </svg>
-                <span>Account</span>
+                <span>{currentLang.account}</span>
               </div>
               <div
                 className='flex items-center gap-3 py-2 font-semibold text-white hover:text-gray-400 cursor-pointer'
@@ -120,7 +135,7 @@ const Header = () => {
                     d='M17 16l-4-4m0 0l-4-4m4 4h.01M7 8h10M7 12h10M7 16h10'
                   />
                 </svg>
-                <span>Sign Out</span>
+                <span>{currentLang.signOut}</span>
               </div>
             </div></div>
           </div>}

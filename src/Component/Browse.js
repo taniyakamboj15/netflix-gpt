@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 
 const Browse = () => {
   const isGptSearch = useSelector((store) => store.gpt.showGptSearch);
- console.log("gpt",isGptSearch)
+//  console.log("gpt",isGptSearch)
   return (
     <div>
         <Header/>

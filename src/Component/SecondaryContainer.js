@@ -5,7 +5,7 @@ import MovieList from './MovieList';
 
 const SecondaryContainer = () => {
     const movies = useSelector((store)=>store.movie);
-    console.log("movies",movies);
+    // console.log("movies",movies);
    
   return (
     <div className='w-full z-20 absolute bg-black'>
