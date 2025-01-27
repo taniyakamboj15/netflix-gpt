@@ -30,8 +30,8 @@ const GptSearchBar = () => {
     store: true,
     messages: [{ role: "user", content: message }],
   });
+
   setLoading(false)
-  console.log("reply from chatgpt - ",completion.choices[0].message.content);
 
   const gptMovies = completion.choices[0].message.content.split(",");
 
@@ -39,6 +39,7 @@ const GptSearchBar = () => {
   const tmdbResults = await Promise.all(data);
   console.log(tmdbResults);
   dispatch(addGptMovieResults({movieNames:gptMovies , movieResults:tmdbResults}));
+
  }
   
 
@@ -60,9 +61,9 @@ const GptSearchBar = () => {
   };
 
   return (
-    <div className="pt-36 flex justify-center">
+    <div className=" pt-36 flex justify-center">
       <form
-        className="flex border-black border rounded-md w-3/5 justify-between gap-1 p-7 bg-black bg-opacity-80"
+        className="  w-full flex border-black border rounded-md md:w-3/5 justify-between gap-1 p-7 bg-black bg-opacity-80"
         onSubmit={handleFormSubmit}
       >
         <input
@@ -78,7 +79,7 @@ const GptSearchBar = () => {
           onClick={handleButtonClick}
           onMouseUp={handleMouseUp}
           onMouseLeave={handleMouseLeave}
-          disabled={loading} 
+          disabled={loading}
         >
           {loading ? 'Loading...' : currentLang.searchButton}
         </button>

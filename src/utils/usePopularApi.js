@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { API_Options, POPULAR_API } from './constants';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';

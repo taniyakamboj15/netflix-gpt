@@ -1,7 +1,7 @@
 import { API_Options, TRENDING_MOVIE_API } from './constants';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import {  addTrendingMovie } from './movieSlice';
+import { addTrendingMovie } from './movieSlice';
 
 const useTrendingMovie = () => {
     const dispatch = useDispatch();

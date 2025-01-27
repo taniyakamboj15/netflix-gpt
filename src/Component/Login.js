@@ -20,7 +20,8 @@ const Login = () => {
     const handleLogin = () => {
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        const name = username.current.value;
+        let name = "Default"
+       
 
         console.log("entered email is ", email);
         console.log("entered password is ", password);
@@ -30,6 +31,7 @@ const Login = () => {
         if (message) return;
 
         if (!IsSignInForm) {
+           name = username.current.value;
           if (!username.current || !username.current.value) {
             setErrorMessage("Please enter your full name.");
             return;
@@ -95,10 +97,10 @@ const Login = () => {
         <div>
             <Header />
             <div className="absolute">
-                <img src={BACKGROUNDIMAGE} alt="backgroundimage" className="w-screen h-full object-cover" />
+                <img src={BACKGROUNDIMAGE} alt="backgroundimage" className="w-screen h-screen sm:h-full  object-cover" />
             </div>
             <div>
-                <form onSubmit={(e) => e.preventDefault()} className="absolute w-3/12 p-12 my-60 mx-auto right-0 left-0 bg-black flex flex-col bg-opacity-80 gap-5">
+                <form onSubmit={(e) => e.preventDefault()} className="absolute w-[90%] md:w-4/12 p-12 my-60 mx-auto right-0 left-0 bg-black flex flex-col bg-opacity-80 gap-5">
                     <h1 className="text-white text-xl p-4">{IsSignInForm ? "Sign In" : "Sign Up"}</h1>
                     <input className="py-3 bg-gray-300" type="text" placeholder="Email" ref={emailRef} />
                     {!IsSignInForm && (

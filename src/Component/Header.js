@@ -58,8 +58,8 @@ const Header = () => {
   const showGptSearch=useSelector((store)=>store.gpt.showGptSearch);
 
   return (
-    <div className='fixed bg-gradient-to-b from-black w-full z-10 top-0 flex justify-between items-center  px-10'>
-        <img className="w-60"src={LOGO_URL} alt="header logo"></img>
+    <div className='fixed bg-opacity-50 bg-gradient-to-b from-black w-full z-10 top-0 flex justify-between items-center  px-10 bg-black  flex-col md:flex-row'>
+        <img className="w-60 mx-auto md:mx-0"src={LOGO_URL} alt="header logo"></img>
         {user && 
         <div className='flex gap-4'>
          {showGptSearch &&
