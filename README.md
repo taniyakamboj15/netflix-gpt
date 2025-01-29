@@ -96,6 +96,16 @@ Netflix GPT is a dynamic web application that integrates GPT-powered movie recom
 - **Firebase**: For secure authentication and hosting.
 
 ---
+## ScreenShots
+![taniyanetlix](https://github.com/user-attachments/assets/23e7b2b5-1f48-424c-bee1-d7ec5a9cb0be)
+![taniyanetflix4](https://github.com/user-attachments/assets/3a154bcf-20fb-4f6a-8830-83e10e8e7808)
+![Screenshot 2025-01-27 235119](https://github.com/user-attachments/assets/a58998df-89da-4818-8f4f-e661fb7970e2)
+![taniyanetflix2](https://github.com/user-attachments/assets/e00f3910-3b96-4408-858b-52e52ee97073)
+
+
+
+
+
 
 **Author**: Taniya Kamboj
 
